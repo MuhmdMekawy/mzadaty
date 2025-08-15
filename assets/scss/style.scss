@@ -1,0 +1,540 @@
+// import variables 
+@import "./variables";
+@import "./generic";
+@import "./mixins";
+@import "./main-btn";
+@import "./pageTransition";
+@import "./otp_input";
+@import "./form";
+@import "./popup";
+@import "./pulse";
+@import "./auth";
+@import "./flex_buttons";
+@import "./auction";
+
+
+
+.container{
+  max-width: clamp(300px, 100%, 1800px);
+  margin: 0 auto;
+  padding-inline: 20px;
+  transition: 1s;
+  display: flex;
+  &.page_active{
+    // margin-inline-start: 275px !important;
+    justify-content: flex-end;
+    transition: 1s;
+    @media (max-width : 767px) {
+      transition: 1s;
+      margin-inline-start: 0 !important;
+    }
+  }
+}
+
+h3.title{
+  text-align: center;
+  font-size: clamp(18px , 4vw , 24px);
+  font-weight: 500;
+}
+
+
+.auth_page{
+  .input{
+    background: #FDFDFD;
+    box-shadow: 0px 0px 8px 0px #BABABA2E;
+  }
+}
+
+.head{
+  text-align: start;
+  margin-bottom: 30px;
+  &.centered{
+    text-align: center;
+    h3{
+      font-size: clamp(16px , 2.5vw , 20px);
+      font-weight: 600;
+    }
+    p{
+      font-size:14px;
+      font-weight: 400;
+      color: $secColor;
+    }
+  }
+}
+
+
+.p-inputotp{
+  max-width: 500px;
+  margin: 20px auto 40px;
+  justify-content: space-evenly !important;
+  height: 56px;
+  .p-inputotp-input{
+    width: 60px !important;
+    border-radius: 6px !important;    
+  }
+}
+
+.static_pages{
+  width: 100%;
+  transition: 1s;
+  &.mini_width{
+    width: calc(100% - 260px);
+    @media (max-width : 1200px) {
+      width: calc(100% - 275px);
+    }
+    @media (max-width : 767px) {
+      width: 100%;
+    }
+  }
+}
+
+.static_page{
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  background: #FFF;
+  box-shadow: 0px 0px 8px 0px rgba(186, 186, 186, 0.18);
+  padding: 20px 12px;
+  margin-inline: auto;  
+  transition: 1s;
+  margin-block: 15px;
+  .image{
+    max-width: 120px;
+    margin: 0 auto 20px;
+  }
+  .text{
+    font-size: 12px;
+    font-weight: 400;
+    color: #1D1D1D;
+    h3{
+      margin-bottom: 10px;
+    }
+    ul{
+      padding-inline: 15px;
+      list-style: decimal;
+    }
+    hr{
+      margin-block: 15px;
+    }
+  }
+}
+
+// settings page 
+.settings_page{
+  .p-toggleswitch{
+    width: 30px;
+    height: 15px;
+    margin-inline-start: auto;
+    &.p-toggleswitch-checked{
+      .p-toggleswitch-handle{
+        inset-inline-start: 17px !important;
+      }
+    }
+  }
+  .p-toggleswitch-handle{
+    width: 10px !important;
+    height: 10px !important;
+    top: 64%;
+    &.active{
+      right: 15px !important;
+    }
+  }
+}
+
+.page_content{
+  width: 100%;
+  flex-grow: 1;
+  padding-bottom: 20px;
+  // next class to manage the width if the side bar is active 
+  &.minimized{
+    transition: 1s;
+    max-width: calc(100% - 275px);
+    @media (max-width : 767px) {
+      max-width: 100%;
+    }
+  }
+}
+
+
+// multi select input 
+.p-multiselect-dropdown{
+  justify-content: end !important;
+  svg{
+    width: 11px;
+  }
+}
+.p-multiselect-label{
+  font-size: 0;
+}
+.p-multiselect-label.p-placeholder{
+  padding-inline-start: 0;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.p-multiselect-option{
+  flex-direction: row-reverse;
+  span{
+    font-size: 13px;
+  }
+}
+
+
+
+
+// pagination
+.p-paginator-content{
+  direction: ltr;
+}
+
+.p-paginator-page.p-paginator-page-selected{
+  color: #fff !important;
+  background: $mainColor !important;
+}
+
+
+// style image loader
+.image_uploader{
+  display: block;
+  border: 2px dashed $mainColor;
+  @include circle(120px);
+  @include displayFlex();
+  margin: 30px auto 15px;
+  transition: 0.3s;
+  cursor: pointer;
+  img{
+    width: 30px;
+    object-fit: contain ;
+  }
+  .uploaded_img{
+    object-fit: cover ;
+    width: 100%;
+  }
+  &:hover{
+    background:$mainColor;
+    img:not(.uploaded_img){
+      filter: invert(1);
+    }
+  }
+}
+label.image:not(.image_uploader){
+  text-align: center;
+  width: 100%;
+  display: block;
+  text-wrap-mode: nowrap;
+  span{
+    color: $secColor;
+  }
+}
+
+
+
+// permissions and users page style
+.page_content{
+  .add_permission_btn{
+    max-width: 160px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    height: 45px;
+    padding: 5px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    margin-inline-start: auto !important;
+  }
+}
+.grid_content{
+  @include displayGrid(300px , $gap : 20px clamp(10px , 100% , 33px));
+  .tab{
+    @include displayFlex($justify : space-between , $align : flex-start);
+    background: #fff;
+    box-shadow: 0px 0px 8px 0px #BABABA2E;
+    padding: 12px;
+    border-radius: 12px;
+    .info{
+      flex-grow: 1;
+      h3{
+        display: flex;
+        gap: 4px;
+        font-size: 14px;
+        font-weight: 300;
+        color: $secColor;
+        i.pi{
+          font-size: 16px;
+        }
+      }
+      h4{
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        @include textTruncate(1);
+      }
+      ul{
+        @include displayFlex($gap : 5px , $justify : flex-start , $wrap : wrap);
+        max-height: 30px;
+        overflow-y: scroll;
+        li{
+          border-radius: 4px;
+          background: #E1E1E1;
+          font-weight: 500;
+          padding: 4px 6px;
+          font-size: 11px;
+        }
+      }
+    }
+    .permission_control{
+      flex-shrink: 0;
+      .main-btn{
+        border-radius: 4px;
+        padding: 5px 10px;
+        height: fit-content;
+        font-size: 14px;
+        gap: 8px;
+        margin-top: 0 !important;
+        .pi{
+          font-size: 16px;
+        }
+        &.danger{
+          margin-top: 8px !important;
+        }
+      }
+
+    }
+    @media (max-width : 991px){
+      flex-wrap: wrap;
+      .permission_control{
+        width: 100%;
+      }
+    }
+  }
+  @media (max-width : 500px){
+    grid-template-columns: repeat(1 , 1fr);
+  }
+}
+.p-datepicker{
+  flex-grow: 1;
+}
+.form .input-wrap .input input{
+  border: none !important;
+}
+
+input::-webkit-inner-spin-button{
+  display: none;
+}
+
+
+.p-toast-message-error{
+  z-index: 999999999 !important;
+}
+
+// ######################### style filter tabs ###########################
+.filter_tabs{
+  @include displayFlex();
+  // width: fit-content;
+  box-shadow: 0px 0px 8px 0px #BABABA2E;
+  padding: 12px;
+  border-radius: 8px ;
+  li.status_tab{
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid $secColor;
+    transition: 0.3s;
+    color: $secColor;
+    cursor: pointer;
+    text-align: center;
+    flex-grow: 1;
+    &.active ,
+    &:hover{
+      background: $mainColor;
+      border-color: $mainColor;
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+  @media (max-width : 991px){
+    flex-wrap: wrap;
+    li.status_tab{
+      min-width: 150px;
+    }
+  }
+}
+
+
+// ##################### AUCTION DETAILS PAGE ###########################
+.page_content.auction_page{
+  @include displayFlex($align : flex-start);
+  .auction_item{
+    width: 50%;
+    &:last-of-type{
+      @include displayFlex($direction : column , $gap : 10px);
+    }
+    .details{
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+  }
+  .static_page{
+    max-width: unset !important;
+    margin: 0;
+    padding-block: 8px;
+    p{
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    &.products_info{
+      .main-btn{
+        height: 50px;
+        font-size: 14px;
+        i.pi{
+          font-size: 12px;
+          transition: 1s;
+        }
+        &:hover{
+          i.pi{
+            padding-inline-start: 20px;
+          }
+        }
+        &:not(first-of-type){
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+  ul{
+    @include displayFlex($direction : column);
+    position: relative;
+    h3.title{
+      padding-bottom: 5px;
+      border-bottom: 1px solid #e4e4e4;
+    }
+    button{
+      position: absolute;
+      inset-inline-end: 8px;
+      top: 10px;
+      font-size: 12px;
+      color: $secColor;
+      text-decoration: underline;
+    }
+    li{
+      @include displayFlex($justify : space-between);
+      width: 100%;
+      h4{
+        font-size: 12px;
+        display: flex;
+        gap: 5px;
+      }
+    }
+  }
+  h3.title{
+    text-align: start;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    + hr{
+      margin: 4px 0;
+      background: #e4e4e4;
+      width: 100%;
+    }
+  }
+  .auction_status{
+    text-align: center;
+    padding-block: 15px;
+    // margin-top: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    background: #d9d9d9;
+    width: 100%;
+    &.winner{
+      background: #01B5821A;
+      color: #01B582;
+    }
+  }
+  @media (max-width : 991px){
+    flex-wrap: wrap-reverse;
+    .auction_item{
+      width: 100%;
+    }
+  }
+}
+
+
+//  ################# Customize the carousel of product ################
+.product_slider {
+  @include displayFlex($direction : row-reverse ,$align: stretch , $gap : 8px  , $justify : stretch);
+  width: 100%;
+  max-height: 310px;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 0;
+  margin-bottom: 20px;
+  border: 1px solid #e4e4e4;
+  border-radius: 12px;
+  overflow: hidden;
+  section{
+    padding: 0 !important;
+  }
+  @media (max-width : 567px){
+    height: 250px;
+  }
+}
+
+#product_gallery{
+  width: 100%;
+  border-radius: 8px !important;
+  overflow: hidden;
+  background: #e4e4e4;
+  img{
+    cursor: zoom-in !important;
+    // object-fit: contain;
+  }
+}
+
+#product_thumbnails .carousel__viewport {
+  overflow: hidden !important;
+  // height: 300px; /* Match your desired vertical height */
+  @media (max-width : 600px){
+    display: none;
+  }
+}
+
+#product_thumbnails .carousel__track {
+  transform: translateX(0) !important;
+  flex-direction: column !important; /* Ensure vertical alignment */
+  justify-content: space-between;
+  transition: transform 0.5s ease-in-out; /* Smooth vertical transition */
+}
+
+#product_thumbnails .carousel__slide {
+  width: 120px !important;
+  max-height: 310px;
+  padding-block: 2px !important;
+  .thumbnail{
+    width: 120px !important;
+    height: calc((310px / 3) - 5px) !important; /* Adjust thumbnail height */
+    border-radius: 4px !important; /* Optional styling */
+    overflow: hidden ;
+    filter: brightness(0.3);
+    cursor: pointer;
+    transition: 0.6s;
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &:hover ,
+  &.carousel__slide--active{
+    .thumbnail{
+      filter: brightness(1) !important;
+    }
+  }
+}
+
+
+
+.p-multiselect-label:has(.p-chip){
+  display: none !important;
+}

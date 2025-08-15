@@ -1,0 +1,56 @@
+.auction{
+  background: #fff;
+  box-shadow: 0px 0px 8px 0px #BABABA2E;
+  padding: 12px;
+  border-radius: 12px;
+  position: relative;
+  .control_btns{
+    position: absolute;
+    top: 10px;
+    inset-inline-end: 8px;
+    display: flex;
+    gap: 8px;
+    button{
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+        background: $mainColor;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      @include displayFlex();
+      padding: 4px;
+      background: #F5F5F5;
+      color: $mainColor;
+      transition: 0.3s;
+      i{
+        font-size: 12px;
+      }
+      &.delete_btn{
+        color: $dangerColor;
+        font-weight:100;
+        &:hover{
+          background: $dangerColor;
+          color: #fff;
+        }
+      }
+      &:hover{
+        background: $mainColor;
+        color: #fff;
+      }
+    }
+  }
+  .info{
+    @include displayFlex($justify : flex-start , $gap : 8px);
+    .image{
+      width: 53px;
+      height: 53px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    h3{
+      font-size: 16px;
+      font-weight: 800;
+    }
+  }
+}
